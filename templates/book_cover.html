@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Little Book of Memories — For Sadnya</title>
+  <!-- Google Fonts for Antique Diary Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body class="diary-body">
+  <div class="vintage-viewport">
+    
+    <!-- Top Back to Home Navigation -->
+    <header class="diary-header">
+      <a href="{% url 'home' %}" class="back-link">
+        <span class="back-arrow">&larr;</span> Back to Welcome Screen
+      </a>
+      <div class="header-stamp">Handcrafted with Love</div>
+    </header>
+
+    <main class="diary-scene">
+      <!-- 3D Book Cover Container -->
+      <div class="book-cover-wrapper" id="bookCover">
+        <div class="hardcover-spine"></div>
+        <div class="hardcover-front">
+          
+          <!-- Ornate Gold/Brown Corner Accents -->
+          <div class="corner-accent top-left"></div>
+          <div class="corner-accent top-right"></div>
+          <div class="corner-accent bottom-left"></div>
+          <div class="corner-accent bottom-right"></div>
+
+          <!-- Decorative Floral Vignette Top -->
+          <div class="cover-flourish">
+            <svg viewBox="0 0 160 40" class="flourish-svg" aria-hidden="true">
+              <path d="M10 20 Q40 5 80 20 Q120 5 150 20 Q120 35 80 20 Q40 35 10 20" fill="none" stroke="#b08968" stroke-width="1.5" />
+              <circle cx="80" cy="20" r="4" fill="#e0839a" />
+              <circle cx="65" cy="18" r="2.5" fill="#e0839a" />
+              <circle cx="95" cy="18" r="2.5" fill="#e0839a" />
+            </svg>
+          </div>
+
+          <!-- Cover Titles -->
+          <div class="cover-content">
+            <p class="cover-kicker">A Private Collection</p>
+            <h1 class="cover-main-title">A Little Book of Memories</h1>
+            <div class="vintage-divider">
+              <span class="divider-line"></span>
+              <span class="divider-icon">❦</span>
+              <span class="divider-line"></span>
+            </div>
+            <h2 class="cover-subtitle">A collection of little things that make you special.</h2>
+            
+            <div class="cover-dedication-box">
+              <span class="dedication-label">Dedicated to</span>
+              <p class="dedication-name">Sadnya <span class="heart-pulse">❤️</span></p>
+            </div>
+
+            <p class="cover-author">Written by <strong>OP</strong></p>
+            
+            <!-- Satin Ribbon Bookmark Element -->
+            <div class="silk-ribbon"></div>
+
+            <!-- Open the Book Button -->
+            <div class="cover-action">
+              <a href="{% url 'book_page' 1 %}" class="vintage-book-btn" id="openBookBtn">
+                <span class="btn-text">Open the Book ♡</span>
+                <span class="btn-subtext">Begin the journey</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Floral Silhouette Footer -->
+          <div class="cover-bot-accent">
+            <span class="bot-star">✦</span>
+            <span class="bot-flower">🌸</span>
+            <span class="bot-star">✦</span>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer info -->
+    <footer class="diary-footer">
+      <p class="footer-note">Turn the pages to discover words written from the heart.</p>
+    </footer>
+
+  </div>
+
+  <script src="{% static 'js/book.js' %}"></script>
+</body>
+</html>

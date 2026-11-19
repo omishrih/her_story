@@ -1,0 +1,251 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} — A Little Book for Sadnya</title>
+  <!-- Google Fonts for Antique Diary Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body class="diary-body">
+  
+  <!-- 3D Book Closing Transition Theater (Hidden until Close Book is clicked) -->
+  <div class="book-closing-theater" id="closingTheater" aria-hidden="true">
+    <div class="closing-book-rig" id="closingRig">
+      <div class="closing-wing left-wing">
+        <div class="wing-inner-left">
+          <span class="wing-stamp">A Little World of Letters</span>
+        </div>
+      </div>
+      <div class="closing-spine"></div>
+      <div class="closing-wing right-wing">
+        <div class="wing-inner-right">
+          <span class="wing-flower">🌸</span>
+        </div>
+      </div>
+      <div class="closing-hardcover-front">
+        <div class="cover-gold-border">
+          <p class="closing-cover-kicker">For Sadnya ❤️</p>
+          <h2 class="closing-cover-title">A Little Book of Memories</h2>
+          <div class="closing-cover-icon">❦</div>
+          <p class="closing-cover-author">OP</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vintage-viewport" id="vintageViewport">
+    
+    <!-- Top Navigation Bar -->
+    <header class="diary-header">
+      <div class="header-left">
+        <a href="{% url 'book_cover' %}" class="back-link">
+          <span class="back-arrow">&larr;</span> Book Cover
+        </a>
+      </div>
+      <div class="header-center">
+        <span class="book-mini-title">A Little Book of Memories</span>
+      </div>
+      <div class="header-right">
+        <span class="page-counter-badge">Page {{ page_num }} of {{ total_pages }}</span>
+      </div>
+    </header>
+
+    <!-- Reading Stage -->
+    <main class="diary-stage" id="diaryStage">
+      
+      <!-- 3D Book Page Container -->
+      <article class="diary-sheet {% if is_final %}final-page-sheet{% endif %}" id="diarySheet" data-page="{{ page_num }}" data-total="{{ total_pages }}">
+        
+        <!-- Ornate Corners & Border -->
+        <div class="sheet-corner top-left"></div>
+        <div class="sheet-corner top-right"></div>
+        <div class="sheet-corner bottom-left"></div>
+        <div class="sheet-corner bottom-right"></div>
+        
+        <div class="sheet-inner-border">
+          
+          <!-- Chapter Header -->
+          <div class="diary-page-header">
+            <div class="chapter-tag-wrap">
+              <span class="chapter-tag {% if is_final %}final-chapter-tag{% endif %}">{{ chapter }}</span>
+            </div>
+            
+            <h1 class="diary-page-title {% if is_final %}final-page-title{% endif %}">
+              {% if is_final %}
+                <span class="heading-floating-heart pulse-slow">💖</span>
+              {% endif %}
+              {{ title }}
+              {% if is_final %}
+                <span class="heading-floating-heart pulse-slow">💖</span>
+              {% endif %}
+            </h1>
+            
+            {% if subtitle %}
+              <p class="diary-page-subtitle">{{ subtitle }}</p>
+            {% endif %}
+            
+            <div class="ornamental-rule">
+              <span class="rule-line"></span>
+              <span class="rule-symbol">{% if is_final %}❦ 🌸 ❦{% else %}❦{% endif %}</span>
+              <span class="rule-line"></span>
+            </div>
+          </div>
+
+          <!-- Diary Page Layout: Photo & Letter Content -->
+          <div class="diary-content-grid">
+            
+            <!-- Photograph Showcase Column -->
+            <aside class="diary-photo-column">
+              <div class="vintage-photo-frame {% if is_final %}final-photo-frame{% endif %}">
+                <!-- Vintage Photo Corner Holders -->
+                <div class="photo-corner pc-tl"></div>
+                <div class="photo-corner pc-tr"></div>
+                <div class="photo-corner pc-bl"></div>
+                <div class="photo-corner pc-br"></div>
+                
+                <div class="photo-mat">
+                  {% if image_path %}
+                    <img src="{% static 'images/'|add:image_path %}" alt="{{ title }}" class="vintage-photo-img" loading="eager" />
+                  {% else %}
+                    <div class="photo-placeholder-box">
+                      <span class="camera-icon">📷</span>
+                      <span class="placeholder-text">Photograph for Sadnya</span>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <!-- Hand-written Photo Tape / Caption -->
+                <div class="photo-caption-tag">
+                  <span class="caption-handwritten">{{ photo_caption }}</span>
+                </div>
+              </div>
+
+              <!-- Small decorative floral badge below photo -->
+              <div class="photo-floral-accent">
+                <span class="floral-icon">🌸</span>
+                <span class="floral-text">{% if is_final %}Forever Grateful{% else %}Cherished Memory{% endif %}</span>
+              </div>
+            </aside>
+
+            <!-- Letter & Written Message Column -->
+            <section class="diary-text-column">
+              <div class="letter-body {% if is_final %}final-poem-body{% endif %}">
+                {% for para in paragraphs %}
+                  <p class="letter-paragraph {% if is_final %}final-poem-stanza{% endif %}">{{ para|safe }}</p>
+                {% endfor %}
+
+                {% if quote %}
+                  <blockquote class="diary-quote-box">
+                    <span class="quote-mark">“</span>
+                    <p class="quote-text">{{ quote }}</p>
+                  </blockquote>
+                {% endif %}
+
+                {% if signature %}
+                  <div class="letter-signature-wrap {% if is_final %}final-signature-wrap{% endif %}">
+                    <p class="letter-signature">{{ signature|linebreaksbr }}</p>
+                  </div>
+                {% endif %}
+
+                {% if decorative_line %}
+                  <div class="decorative-closing-line">
+                    <span class="closing-line-text">{{ decorative_line }}</span>
+                  </div>
+                {% endif %}
+
+                <!-- Close Book CTA placed prominently on the final page content -->
+                {% if is_final %}
+                  <div class="final-sheet-action">
+                    <button class="close-book-main-btn" id="closeBookMainBtn" data-home-url="{% url 'home' %}">
+                      <span class="close-btn-text">Close the Book ♡</span>
+                      <span class="close-btn-sub">Return to Birthday Screen</span>
+                    </button>
+                  </div>
+                {% endif %}
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Bottom Floral Flourish & Sheet Number -->
+          <div class="sheet-bottom-flourish">
+            <div class="flourish-flower">{% if is_final %}🌸 💖 🌸{% else %}✿ ❀ ✿{% endif %}</div>
+            <div class="sheet-folio">- {{ page_num }} -</div>
+          </div>
+
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Interactive Navigation Dock -->
+    <nav class="diary-nav-dock" aria-label="Book page navigation">
+      
+      <!-- Previous Button (always functional) -->
+      {% if page_num == 1 %}
+        <a href="{% url 'book_cover' %}" class="nav-control prev-btn" id="prevPageBtn" title="Back to Book Cover">
+          <span class="nav-btn-icon">&larr;</span>
+          <span class="nav-btn-text">Cover</span>
+        </a>
+      {% elif has_prev %}
+        <a href="{% url 'book_page' prev_page %}" class="nav-control prev-btn" id="prevPageBtn" title="Previous Page">
+          <span class="nav-btn-icon">&larr;</span>
+          <span class="nav-btn-text">Previous</span>
+        </a>
+      {% else %}
+        <span class="nav-control prev-btn disabled" aria-disabled="true">
+          <span class="nav-btn-icon">&larr;</span>
+          <span class="nav-btn-text">Previous</span>
+        </span>
+      {% endif %}
+
+      <!-- Page Progress Dots -->
+      <div class="nav-progress-dock">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" style="width: calc({{ page_num }} / {{ total_pages }} * 100%);"></div>
+        </div>
+        <div class="progress-dots">
+          {% for p in page_range %}
+            {% if p == page_num %}
+              <span class="progress-dot active" title="Page {{ p }}"></span>
+            {% elif p < page_num %}
+              <a href="{% url 'book_page' p %}" class="progress-dot visited" title="Page {{ p }}"></a>
+            {% else %}
+              <a href="{% url 'book_page' p %}" class="progress-dot" title="Page {{ p }}"></a>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <span class="progress-label">{{ page_num }} / {{ total_pages }}</span>
+      </div>
+
+      <!-- Next Button OR Close the Book Button on the final page -->
+      {% if has_next %}
+        <a href="{% url 'book_page' next_page %}" class="nav-control next-btn" id="nextPageBtn" title="Next Page">
+          <span class="nav-btn-text">Next Page</span>
+          <span class="nav-btn-icon">&rarr;</span>
+        </a>
+      {% else %}
+        <!-- Final page: Close the Book button (No Next Button) -->
+        <button class="nav-control close-book-nav-btn" id="closeBookNavBtn" data-home-url="{% url 'home' %}" title="Close the Book">
+          <span class="nav-btn-text">Close the Book ♡</span>
+          <span class="nav-btn-icon">❦</span>
+        </button>
+      {% endif %}
+
+    </nav>
+
+    <!-- Keyboard & Mobile Gestures Hint -->
+    <div class="gesture-hints">
+      <span>Tip: Use Left & Right Arrow keys (&larr; &rarr;) or swipe on mobile to turn pages</span>
+    </div>
+
+  </div>
+
+  <script src="{% static 'js/book.js' %}"></script>
+</body>
+</html>

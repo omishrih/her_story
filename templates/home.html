@@ -1,0 +1,561 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Little World of Letters — For Sadnya</title>
+  
+  <!-- Google Fonts for Vintage Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body class="landing-body">
+
+  <!-- ======================================================================
+       Romantic Navigation Bar with Mobile Drawer
+       ====================================================================== -->
+  <nav class="site-nav" id="mainNav">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-heart">🌸</span>
+        <span class="brand-text">A Little World of Letters</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="nav-links-desktop">
+        <a href="#hero" class="nav-link">Welcome</a>
+        <a href="#dedication" class="nav-link">Dedication</a>
+        <a href="#about" class="nav-link">About Sadnya</a>
+        <a href="#college" class="nav-link">College Days</a>
+        <a href="#traditional" class="nav-link">Traditional Day</a>
+        <a href="#funny" class="nav-link">Funny Moments</a>
+        <a href="#friendship" class="nav-link">Friendship</a>
+        <a href="#bullet" class="nav-link highlight-bullet">Bullet Dream 🏍️</a>
+        <a href="#promise" class="nav-link">Promise ❤️</a>
+        <a href="{% url 'book_cover' %}" class="nav-btn-book">Digital Diary 📖</a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="nav-hamburger" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Dedicated to Sadnya ❤️</span>
+      <button class="drawer-close" id="drawerClose" aria-label="Close navigation">&times;</button>
+    </div>
+    <div class="drawer-links">
+      <a href="#hero" class="drawer-link">🌸 Welcome Screen</a>
+      <a href="#dedication" class="drawer-link">💌 Dedication</a>
+      <a href="#about" class="drawer-link">✨ About Sadnya</a>
+      <a href="#college" class="drawer-link">🎓 College Memories</a>
+      <a href="#traditional" class="drawer-link">🥻 Traditional Day Grace</a>
+      <a href="#funny" class="drawer-link">😄 Funny Moments</a>
+      <a href="#friendship" class="drawer-link">🌿 Little Moments, Big Memories</a>
+      <a href="#bullet" class="drawer-link drawer-bullet">🏍️ The Bullet Riding Dream</a>
+      <a href="#promise" class="drawer-link">❤️ I'm Here for You...!!</a>
+      <a href="{% url 'book_cover' %}" class="drawer-btn-book">Open Digital Diary ♡</a>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <!-- ======================================================================
+       1. Hero / Opening Section
+       ====================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-container">
+      
+      <!-- Heart Icon -->
+      <div class="hero-heart-wrapper">
+        <svg class="heart-svg" viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16 29s-13-8.35-13-17.5S6.5 0 16 9.08 29 0 29 11.5 16 29 16 29z" fill="#ff8fa3" />
+        </svg>
+      </div>
+
+      <!-- Main Titles -->
+      <h1 class="title">A Little World of Letters</h1>
+      <h2 class="subtitle">Some things are too beautiful to leave unwritten.</h2>
+
+      <!-- Static Tree Illustration with Heart-Shaped Flower Canopy -->
+      <div class="hero-tree-wrap">
+        <svg class="tree-svg" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Trunk -->
+          <line x1="100" y1="250" x2="100" y2="150" stroke="#8b5a2b" stroke-width="12" stroke-linecap="round" />
+          <!-- Main branches -->
+          <line x1="100" y1="150" x2="60" y2="100" stroke="#8b5a2b" stroke-width="8" stroke-linecap="round" />
+          <line x1="100" y1="150" x2="140" y2="100" stroke="#8b5a2b" stroke-width="8" stroke-linecap="round" />
+          <!-- Smaller branches -->
+          <line x1="60" y1="100" x2="40" y2="60" stroke="#8b5a2b" stroke-width="5" stroke-linecap="round" />
+          <line x1="60" y1="100" x2="55" y2="55" stroke="#8b5a2b" stroke-width="5" stroke-linecap="round" />
+          <line x1="140" y1="100" x2="160" y2="60" stroke="#8b5a2b" stroke-width="5" stroke-linecap="round" />
+          <line x1="140" y1="100" x2="145" y2="55" stroke="#8b5a2b" stroke-width="5" stroke-linecap="round" />
+          <!-- Heart‑shaped flower canopy -->
+          <g class="flowers">
+            <circle cx="100" cy="80" r="7" fill="#ffb6c1" />
+            <circle cx="85" cy="70" r="6" fill="#ff8fa3" />
+            <circle cx="70" cy="60" r="5" fill="#ff5c8a" />
+            <circle cx="55" cy="55" r="4" fill="#ffb6c1" />
+            <circle cx="45" cy="50" r="3" fill="#ff8fa3" />
+            <circle cx="100" cy="80" r="7" fill="#ffb6c1" />
+            <circle cx="115" cy="70" r="6" fill="#ff8fa3" />
+            <circle cx="130" cy="60" r="5" fill="#ff5c8a" />
+            <circle cx="145" cy="55" r="4" fill="#ffb6c1" />
+            <circle cx="155" cy="50" r="3" fill="#ff8fa3" />
+            <circle cx="100" cy="95" r="8" fill="#ffb6c1" />
+            <circle cx="90" cy="88" r="6" fill="#ff8fa3" />
+            <circle cx="110" cy="88" r="6" fill="#ff8fa3" />
+            <circle cx="80" cy="78" r="5" fill="#ff5c8a" />
+            <circle cx="120" cy="78" r="5" fill="#ff5c8a" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- Birthday & Tribute Text -->
+      <h2 class="birthday">Happy Birthday, Sadnya!</h2>
+      <h3 class="handwritten">Made with love, just for you</h3>
+      <p class="support">A little collection of thoughts, memories, and letters.</p>
+
+      <!-- Featured Portrait Frame -->
+      <div class="hero-portrait-card">
+        <div class="portrait-frame">
+          <img src="{% static 'images/sadnya/sadnya-portrait.jpg' %}" alt="Sadnya — Beautiful and Radiating Smile" class="hero-photo-img" />
+          <div class="portrait-label">
+            <span class="label-heart">♡</span>
+            <span class="label-text">The Girl with the Radiant Energy</span>
+            <span class="label-heart">♡</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Action Buttons -->
+      <div class="hero-cta-group">
+        <a href="{% url 'book_cover' %}" class="cta-btn primary-cta">A little surprise awaits ♡</a>
+        <a href="#dedication" class="cta-btn secondary-cta">Explore Our Memories ↓</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       2. Dedication Section
+       ====================================================================== -->
+  <section class="story-section bg-parchment" id="dedication">
+    <div class="section-container">
+      
+      <div class="section-header">
+        <span class="section-tag">A Dedicated Tribute</span>
+        <h2 class="section-title">To My Best Friend, Sadnya ❤️</h2>
+        <div class="ornament-divider">❦ 🌸 ❦</div>
+      </div>
+
+      <div class="split-grid reverse-mobile">
+        <!-- Photo Card -->
+        <div class="grid-media">
+          <div class="vintage-polaroid">
+            <div class="tape-strip"></div>
+            <div class="polaroid-mat">
+              <img src="{% static 'images/sadnya/dedication.jpeg' %}" alt="Dedication to Sadnya" class="polaroid-img" />
+            </div>
+            <p class="polaroid-caption">Dedicated from the bottom of my heart ♡</p>
+          </div>
+        </div>
+
+        <!-- Text Card -->
+        <div class="grid-content">
+          <div class="letter-scroll-card">
+            <p class="story-lead">This book is dedicated to my best friend, who has seen my ups and downs and has still stood beside me.</p>
+            <p class="story-body">Some people become an important part of our lives without even realizing how special they are. Some friendships are not planned. They simply happen, and slowly, without us noticing, those people become an important part of our everyday lives.</p>
+            <p class="story-body">This little book is my way of appreciating one such person. Every page here is written to celebrate you, your personality, your strength, your beautiful heart, and all the little things that make you who you are.</p>
+            <p class="story-body">I may not always express everything through words, but I hope these pages help you understand how much I appreciate having you in my life.</p>
+            <div class="signature-block">
+              <p class="sig-text">Written with love,<br><strong>OP ❤️</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       3. About Sadnya — Energy, Grace & Leadership
+       ====================================================================== -->
+  <section class="story-section bg-ivory" id="about">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-tag">Her Strength & Personality</span>
+        <h2 class="section-title">Sadnya — A Name Full of Energy</h2>
+        <p class="section-subtitle">Confidence, determination, and a heart full of warmth</p>
+        <div class="ornament-divider">❦ ✨ ❦</div>
+      </div>
+
+      <div class="features-mosaic">
+        <!-- Feature 1: The Meaning -->
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-heading">Unstoppable Spirit</h3>
+          <p class="feature-desc">Her name represents confidence, energy, determination, and an attitude that never gives up. She is a strong girl who carries the courage to face difficulties instead of stepping back.</p>
+        </div>
+
+        <!-- Feature 2: Visionary -->
+        <div class="feature-card">
+          <div class="feature-icon">🌟</div>
+          <h3 class="feature-heading">Visionary Leader</h3>
+          <p class="feature-desc">She thinks ahead, has her own unique perspective, and carries an attitude that makes her truly stand apart. She works tirelessly for her future and is focused on building a successful career.</p>
+        </div>
+
+        <!-- Feature 3: Compassionate -->
+        <div class="feature-card">
+          <div class="feature-icon">💖</div>
+          <h3 class="feature-heading">A Heart for Others</h3>
+          <p class="feature-desc">She cannot easily watch someone feeling sad. If she notices somebody upset, she immediately tries to comfort them and make them smile again. Her caring nature makes people feel safe and loved.</p>
+        </div>
+      </div>
+
+      <!-- Compliments Banner -->
+      <div class="quote-banner">
+        <p class="quote-banner-text">
+          "Standing at approximately 5 feet tall, looking beautiful wearing her glasses, she carries herself with natural grace. But what makes her truly remarkable is that her personality and inner soul are even more beautiful than her appearance."
+        </p>
+        <span class="quote-banner-author">— Never forget, Sadnya, the world needs more people with your kind of strength, kindness, and beautiful energy. ❤️</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       4. College Days Memories Section
+       ====================================================================== -->
+  <section class="story-section bg-parchment" id="college">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-tag">Campus Memories</span>
+        <h2 class="section-title">Those Beautiful College Days</h2>
+        <p class="section-subtitle">Moments, laughter, and an unexpected friendship</p>
+        <div class="ornament-divider">❦ 🎓 ❦</div>
+      </div>
+
+      <!-- Two-Photo Side-by-Side Showcase -->
+      <div class="photo-pair-grid">
+        <div class="photo-frame-styled">
+          <img src="{% static 'images/sadnya/college-memories.jpg' %}" alt="Sadnya College Memories" class="pair-img" />
+          <span class="pair-caption">Moments from our campus days 🌸</span>
+        </div>
+        <div class="photo-frame-styled">
+          <img src="{% static 'images/sadnya/friendship-memories.jpg' %}" alt="Cherished College Friendship" class="pair-img" />
+          <span class="pair-caption">Laughter that made semesters fly by ♡</span>
+        </div>
+      </div>
+
+      <div class="narrative-box">
+        <p>Those college years gave us countless beautiful memories. We shared moments, conversations, endless laughter, and everyday experiences that slowly and quietly built our friendship stronger. Even though college days keep moving forward, some friendships remain timeless.</p>
+        <p>I always noticed how seriously you worked towards your studies. You were focused on building a good career and creating a better future for yourself. Your dedication and determination are things that will always inspire me.</p>
+        <blockquote class="highlight-quote">
+          "In my personal experience, you were the first girl I ever became this close to as a friend. You were never just a classmate — you became a genuinely wonderful, irreplaceable companion in my life. The best friendships truly happen when you least expect them."
+        </blockquote>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       5. Traditional Day Grace & Gallery
+       ====================================================================== -->
+  <section class="story-section bg-rose-tint" id="traditional">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-tag">Traditional Elegance</span>
+        <h2 class="section-title">That Traditional Day Grace</h2>
+        <p class="section-subtitle">When you came wearing that saree, you looked absolutely beautiful.</p>
+        <div class="ornament-divider">❦ 🥻 ❦</div>
+      </div>
+
+      <!-- 3-Photo Gallery -->
+      <div class="gallery-three-grid">
+        <!-- Photo 1 -->
+        <div class="polaroid-card tilt-left">
+          <div class="polaroid-inner">
+            <img src="{% static 'images/sadnya/college-traditional-day1.jpg' %}" alt="Sadnya Traditional Day Saree" class="gallery-img" />
+            <p class="polaroid-text">Graceful in saree ♡</p>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="polaroid-card tilt-straight">
+          <div class="polaroid-inner">
+            <img src="{% static 'images/sadnya/college-traditional-day3.jpg' %}" alt="Sadnya Traditional Celebration" class="gallery-img" />
+            <p class="polaroid-text">A timeless memory 🌸</p>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="polaroid-card tilt-right">
+          <div class="polaroid-inner">
+            <img src="{% static 'images/sadnya/traditional-day.jpg' %}" alt="Traditional Day Radiance" class="gallery-img" />
+            <p class="polaroid-text">Unforgettable elegance ✨</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="traditional-note">
+        <p class="note-cursive">
+          "There was something so special and graceful about how you carried yourself that day. It remains one of those precious college memories that I would love to hold onto forever."
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       6. Funny Moments Section — "The Funniest Memories Together"
+       ====================================================================== -->
+  <section class="story-section bg-parchment" id="funny">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-tag">Pure Joy & Silly Moments</span>
+        <h2 class="section-title">The Funniest Memories Together 😄</h2>
+        <p class="section-subtitle">Because the best friendships are built on unscripted laughter</p>
+        <div class="ornament-divider">❦ 🎈 ❦</div>
+      </div>
+
+      <div class="split-grid">
+        <div class="grid-content">
+          <div class="funny-text-card">
+            <h3 class="card-kicker">Never Lose That Smile</h3>
+            <p class="story-body">Behind all the hard work, career ambition, and serious goals, there is this adorably funny, carefree, and playful side of you that makes being around you so much fun.</p>
+            <p class="story-body">From making spontaneous funny faces to teasing each other over the smallest things, you know exactly how to lighten any mood and turn an ordinary day into something hilarious.</p>
+            <p class="story-body">Friendship is best measured not just by the serious conversations we share, but by how easily we can laugh together without caring about the rest of the world.</p>
+            <p class="story-cursive">"A day without laughing with your best friend is truly a day wasted! Keep spreading that goofy, sparkling joy everywhere you go."</p>
+          </div>
+        </div>
+
+        <div class="grid-media">
+          <div class="vintage-polaroid fun-polaroid">
+            <div class="fun-tape">FUNNY MOMENTS!</div>
+            <div class="polaroid-mat">
+              <img src="{% static 'images/sadnya/funny_face.jpg' %}" alt="Funny Faces and Pure Joy" class="polaroid-img" />
+            </div>
+            <p class="polaroid-caption">That goofy smile that makes everyone happy! 😜❤️</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       7. Friendship Section — "Little Moments, Big Memories"
+       ====================================================================== -->
+  <section class="story-section bg-ivory" id="friendship">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-tag">Everlasting Bond</span>
+        <h2 class="section-title">Little Moments, Big Memories</h2>
+        <p class="section-subtitle">Memories that will always stay special in my heart</p>
+        <div class="ornament-divider">❦ 🌿 ❦</div>
+      </div>
+
+      <div class="split-grid reverse-mobile">
+        <div class="grid-media">
+          <div class="vintage-polaroid">
+            <div class="polaroid-mat">
+              <img src="{% static 'images/sadnya/friendship.jpeg' %}" alt="Everlasting Friendship with Sadnya" class="polaroid-img" />
+            </div>
+            <p class="polaroid-caption">A bond that grew stronger every day ♡</p>
+          </div>
+        </div>
+
+        <div class="grid-content">
+          <div class="letter-scroll-card">
+            <p class="story-lead">True friendship isn't about grand gestures; it's about being there through every season of life.</p>
+            <p class="story-body">Sometimes the simplest moments end up taking the biggest space in our hearts. A quick chat between classes, walking together, sharing advice, or simply listening when the other needed reassurance.</p>
+            <p class="story-body">Through every challenge, you remained the one constant person who brought honesty and positivity into my life. May our friendship continue like this for years to come — celebrating each other's wins and standing together through every high and low.</p>
+            <p class="quote-cursive">"True friendship is a quiet blessing that makes life so much richer. 🌸"</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       8. SPECIAL SECTION — HER BULLET RIDING DREAM
+       ====================================================================== -->
+  <section class="bullet-section" id="bullet">
+    <div class="bullet-container">
+
+      <!-- Badge & Heading -->
+      <div class="bullet-badge-wrap">
+        <span class="bullet-badge">A Promise For The Open Road 🏍️💨</span>
+      </div>
+
+      <h2 class="bullet-title">One Day, Your Bullet Dream Will Come True!</h2>
+      <div class="bullet-rule"></div>
+
+      <!-- Two Bullet Photos Showcase -->
+      <div class="bullet-photos-grid">
+        <div class="bullet-photo-card card-one">
+          <div class="bullet-photo-frame">
+            <img src="{% static 'images/sadnya/bulletriding1.jpg' %}" alt="Sadnya with the Royal Enfield Bullet" class="bullet-img" />
+            <div class="bullet-photo-overlay">
+              <span>The Dream Machine 🏍️</span>
+            </div>
+          </div>
+          <span class="bullet-caption">That feeling of freedom is calling you...</span>
+        </div>
+
+        <div class="bullet-photo-card card-two">
+          <div class="bullet-photo-frame">
+            <img src="{% static 'images/sadnya/bulletriding2.jpg' %}" alt="Sadnya Riding Dream" class="bullet-img" />
+            <div class="bullet-photo-overlay">
+              <span>Future Bullet Rider! ✨</span>
+            </div>
+          </div>
+          <span class="bullet-caption">Confident, fearless, and ready to ride!</span>
+        </div>
+      </div>
+
+      <!-- Heartfelt Promise Message -->
+      <div class="bullet-message-card">
+        <p class="bullet-para">I know riding a Bullet has always been one of your dreams. And I want you to know something – one day, we are definitely going to make that dream come true.</p>
+        
+        <p class="bullet-para">I promise I'll teach you how to ride a Bullet bike, step by step. From learning how to balance it to handling the clutch, changing gears and confidently riding on the road, I'll be right there with you.</p>
+        
+        <p class="bullet-para">Don't worry about making mistakes or being nervous in the beginning. Everyone starts somewhere!</p>
+        
+        <p class="bullet-para">One day, I want to see you riding your own Bullet with confidence, a big smile on your face and that feeling of freedom you've always dreamed about.</p>
+        
+        <p class="bullet-para">And trust me, you won't just learn to ride – you'll become an amazing and confident rider.</p>
+        
+        <div class="bullet-highlight-box">
+          <p class="bullet-strong-promise">
+            "Your Bullet dream is not just a dream anymore. It's something we are definitely going to make happen!"
+          </p>
+        </div>
+
+        <p class="bullet-closing">Until then, keep dreaming. Your riding lessons are waiting! ❤️</p>
+
+        <!-- CTA Button with Interactive Confetti / Toast -->
+        <div class="bullet-action-wrap">
+          <button class="bullet-cta-btn" id="bulletRideBtn">
+            <span class="btn-motorcycle-icon">🏍️</span>
+            <span class="btn-main-text">Your First Bullet Ride Is Waiting 🏍️</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       9. Emotional Support & Lifetime Promise
+       ====================================================================== -->
+  <section class="story-section bg-rose-tint" id="promise">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-tag">A Lifetime Promise</span>
+        <h2 class="section-title">
+          <span class="pulse-heart">💖</span>
+          I'm Here for You...!! ❤️🥺
+          <span class="pulse-heart">💖</span>
+        </h2>
+        <p class="section-subtitle">No matter what happens, a promise that never ends</p>
+        <div class="ornament-divider">❦ 🌸 ❦</div>
+      </div>
+
+      <div class="split-grid">
+        <div class="grid-media">
+          <div class="vintage-polaroid promise-polaroid">
+            <div class="polaroid-mat">
+              <img src="{% static 'images/sadnya/here-for-you.jpg' %}" alt="Always Here for Sadnya" class="polaroid-img" />
+            </div>
+            <p class="polaroid-caption">Forever by your side ♡</p>
+          </div>
+        </div>
+
+        <div class="grid-content">
+          <div class="poem-card">
+            <p class="poem-line">If you ever get upset, <span class="pink-highlight">I'm here to make you smile.</span></p>
+            <p class="poem-line">If you ever lose your way, <span class="pink-highlight">I'm here to help you find yourself again.</span></p>
+            <p class="poem-line">If you ever smile, <span class="pink-highlight">I'm here to make you win.</span></p>
+            <p class="poem-line">If you ever feel tired, <span class="pink-highlight">I'm here to take care of you.</span></p>
+            
+            <p class="poem-line">And whenever darkness surrounds your world,<br><span class="pink-highlight">I'm here to become your light and shine for you...</span></p>
+            
+            <p class="poem-line">Even if a thousand challenges stand before us,<br><span class="pink-highlight">I'll always be there to fight the whole world for you.</span></p>
+            
+            <p class="poem-line poem-climax">Because no matter what happens,<br>I'm not here to walk away from your side,<br><span class="pink-highlight-strong">I'm here to stay by your side,<br>not just for a moment, but for a lifetime... ❤️🫶</span></p>
+
+            <div class="poem-sig">
+              <p>Always here for you — <strong>OP ❤️</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       10. Interactive Digital Book Gateway
+       ====================================================================== -->
+  <section class="gateway-section" id="book-gateway">
+    <div class="section-container">
+      <div class="gateway-card">
+        <span class="gateway-badge">A Personal Keepsake</span>
+        <h2 class="gateway-title">The Vintage Handwritten Diary</h2>
+        <p class="gateway-desc">Turn through the realistic 3D diary pages, where each memory is preserved page by page just like a real personal journal.</p>
+        <div class="gateway-actions">
+          <a href="{% url 'book_cover' %}" class="gateway-btn">
+            <span>Open Sadnya's Diary Book ♡</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       11. Romantic Footer
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="footer-heart">Made with endless love & appreciation for Sadnya ❤️</p>
+      <p class="footer-quote">"Some words are too special to remain unwritten."</p>
+      <div class="footer-back-wrap">
+        <a href="#hero" class="footer-top-btn" title="Back to Top">↑ Back to Top</a>
+      </div>
+      <p class="footer-sub">&copy; Handcrafted for Sadnya's Special Birthday by OP</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Modal for Bullet Ride -->
+  <div class="bullet-toast" id="bulletToast" role="alert" aria-hidden="true">
+    <div class="toast-content">
+      <span class="toast-icon">🏍️💨</span>
+      <div class="toast-text">
+        <strong>Promise Locked!</strong>
+        <p>Your Bullet lessons start whenever you're ready! Helmet on, let's ride! 🌟</p>
+      </div>
+      <button class="toast-close" id="toastClose">&times;</button>
+    </div>
+  </div>
+
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
