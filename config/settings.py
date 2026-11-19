@@ -14,24 +14,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    'SECRET_KEY',
-    'django-insecure-+o$g0^xn!htv@+%!-0xd^kxn!vm(o%5m=49)9xo10^m6_&ir*7'
-)
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-local-development-only-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 't')
-if os.environ.get('RENDER'):
-    DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 allowed_hosts_env = os.environ.get('ALLOWED_HOSTS')
 if allowed_hosts_env:
-    ALLOWED_HOSTS = [h.strip() for h in allowed_hosts_env.split(',') if h.strip()]
-else:
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS += [h.strip() for h in allowed_hosts_env.split(',') if h.strip()]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME and RENDER_EXTERNAL_HOSTNAME not in ALLOWED_HOSTS and '*' not in ALLOWED_HOSTS:
+if RENDER_EXTERNAL_HOSTNAME and RENDER_EXTERNAL_HOSTNAME not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
